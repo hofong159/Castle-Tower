@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Helvetica Neue", Arial, "Noto Sans TC", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Shippori Mincho", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-wood-light: #F4F1EA;
+  --color-wood-warm: #EAE0D5;
+  --color-wood-dark: #3D2B1F;
+  --color-hiroshima-red: #A03030;
+  --color-ink: #2D2926;
+  --color-panel-border: #D1CAC0;
+  --color-sidebar-line: #5D4B3F;
+  --color-card-border: #BCB1A1;
+}
+
+@layer base {
+  body {
+    @apply bg-wood-light text-ink font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+.info-panel {
+  @apply bg-white p-6 border border-panel-border shadow-[4px_4px_0px_rgba(61,43,31,0.1)];
+}
+
+.info-panel h3 {
+  @apply border-l-4 border-hiroshima-red pl-3 text-hiroshima-red font-bold;
+}
+
+.joinery-card {
+  @apply bg-wood-warm border border-card-border p-4 text-center transition-all;
+}
+
+.status-badge {
+  @apply bg-wood-dark text-white px-3 py-1 text-xs uppercase tracking-widest font-bold;
+}
+
+.wood-texture {
+  background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+}
+
+
