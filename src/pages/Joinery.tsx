@@ -35,37 +35,15 @@ const joineryData: JoineryType[] = [
     color: 'fill-wood-dark'
   },
   {
-    id: 'ari-gake',
-    name: '蟻掛 (Ari-gake / 無插銷類)',
-    description: '利用重力與幾何形狀自然鎖定，不需打入木栓（插銷）的工法。',
-    details: [
-      '自然鎖定：上方構件垂直落下後，蟻頭形狀即自動卡死。',
-      '維護優勢：因無插銷，在地震受力後仍保有微小的彈性空間，且易於拆解修復。',
-      '模型重點：展示木材之間純粹的摩擦力與幾何契合。'
-    ],
-    color: 'fill-wood-warm'
-  },
-  {
     id: 'watari-ago',
-    name: '渡搭接 (Watari-ago)',
-    description: '兩根木材以凹槽相互搭疊，常見於屋架結構。',
+    name: '搭接 / 十字搭接 (Watari-ago + Juji-shiguchi)',
+    description: '兩種搭接概念合併展示：同平面削切搭接與十字交會搭接。',
     details: [
-      '受力均勻：透過兩側切削的凹槽，將上方重量均勻傳導至下方構件。',
-      '東小天守應用：屋頂桁架（小屋組）的交錯位置。',
-      '工藝重點：凹槽深度需精確計算，以維持木材斷面的有效強度。'
+      '受力均勻：透過半厚削切，將重量均勻傳導至交會構件。',
+      '東小天守應用：屋頂桁架與格柵框架的交錯位置。',
+      '工藝重點：交會處切削深度必須一致，才能維持同平面咬合。'
     ],
     color: 'fill-stone-600'
-  },
-  {
-    id: 'juji-shiguchi',
-    name: '十字仕口 (十字搭接)',
-    description: '井字型基礎框架的核心，兩根木材以十字型交錯咬合。',
-    details: [
-      '平面剛性：防止框架在水平受力時產生扭轉變形。',
-      '結構核心：天守閣底座（土台）與各層樓板框架的基礎。',
-      '工藝重點：中心交匯處的切削必須絕對對稱。'
-    ],
-    color: 'fill-amber-800'
   }
 ];
 
@@ -108,49 +86,16 @@ export default function Joinery() {
             </motion.g>
           </svg>
         );
-      case 'ari-gake':
-        return (
-          <svg viewBox="0 0 200 200" className="w-full h-full">
-            {/* Bottom Beam */}
-            <rect x="40" y="130" width="120" height="40" className="fill-stone-200" />
-            <path d="M85,130 L115,130 L125,110 L75,110 Z" className="fill-stone-300" />
-            {/* Top Beam with Ari-head */}
-            <motion.g
-              animate={isPlaying ? { y: 0 } : { y: -80 }}
-              transition={{ duration: 1.5, ease: "anticipate" }}
-            >
-              <rect x="80" y="30" width="40" height="80" className={selected.color} />
-              <path d="M75,110 L125,110 L115,130 L85,130 Z" className={selected.color} />
-            </motion.g>
-          </svg>
-        );
       case 'watari-ago':
         return (
           <svg viewBox="0 0 200 200" className="w-full h-full">
-            {/* Bottom Beam with Notch */}
-            <path d="M40,120 L80,120 L80,140 L120,140 L120,120 L160,120 L160,160 L40,160 Z" className="fill-stone-200" />
-            {/* Top Beam with Notch */}
-            <motion.g
-              animate={isPlaying ? { y: 0 } : { y: -80 }}
-              transition={{ duration: 1.5, ease: "anticipate" }}
-            >
-              <path d="M80,60 L120,60 L120,120 L80,120 L80,100 L120,100 L120,120 L80,120 Z" className={selected.color} />
-              <rect x="80" y="60" width="40" height="60" className={selected.color} />
-              <path d="M80,100 L120,100 L120,120 L80,120 Z" className="fill-black/20" />
-            </motion.g>
-          </svg>
-        );
-      case 'juji-shiguchi':
-        return (
-          <svg viewBox="0 0 200 200" className="w-full h-full">
-            {/* Bottom Cross */}
+            {/* Bottom Beam with Cross-lap Notch */}
             <path d="M40,90 L160,90 L160,110 L110,110 L110,130 L90,130 L90,110 L40,110 Z" className="fill-stone-200" />
-            {/* Top Cross */}
+            {/* Top Beam with Matching Notch */}
             <motion.g
               animate={isPlaying ? { y: 0 } : { y: -80 }}
               transition={{ duration: 1.5, ease: "anticipate" }}
             >
-              <path d="M90,40 L110,40 L110,90 L90,90 L90,110 L110,110 L110,90 L90,90 Z" className={selected.color} />
               <rect x="90" y="40" width="20" height="70" className={selected.color} />
               <rect x="70" y="90" width="60" height="20" className={selected.color} />
             </motion.g>
